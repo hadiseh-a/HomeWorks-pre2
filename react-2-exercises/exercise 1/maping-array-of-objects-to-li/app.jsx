@@ -1,4 +1,5 @@
 import React from "react";
+import ShowPlanets from "./ShowPlanets";
 const planets = ["Mars", "Venus", "Jupiter", "Earth", "Saturn", "Neptune"];
 
 /**
@@ -6,7 +7,8 @@ const planets = ["Mars", "Venus", "Jupiter", "Earth", "Saturn", "Neptune"];
  * planets in html called planetsInHTML
  */
 
-
+const planetsInHTML=<><ShowPlanets array={planets}/></>
 
 // 2) Add the array planetsInHTML inside the innerHTML of this <ul>
-const content = (<ul className="list-group m-5"></ul>);
+const Content = (<ul className="list-group m-5">{planetsInHTML}</ul>);
+export default Content 

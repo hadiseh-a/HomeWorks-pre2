@@ -5,6 +5,7 @@ import Alert from "../exercise 1/alert-component/Alert";
 import Card from "../exercise 1/building-a-layout/Card";
 import "./App.css";
 import RenderList from "../exercise 1/maping-array-objects-to-li/RenderList";
+import Content from "../exercise 1/maping-array-of-objects-to-li/app";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
       {/* exercise2 */}
       {/* <Card/> */}
       {/* exercise3 */}
-      <RenderList />
+      {/* <RenderList /> */}
+      {/* exercise4 */}
+      <Content/>
     </>
   );
 }
