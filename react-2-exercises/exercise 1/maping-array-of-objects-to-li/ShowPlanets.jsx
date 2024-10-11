@@ -1,4 +1,4 @@
 function ShowPlanets({array}){
-    return(array.map((prop)=><li>{prop}</li>))
+    return(array.map((planet,index)=><li key={index}>{planet}</li>))
 }
 export default ShowPlanets

@@ -1,12 +1,10 @@
-function Pokecard(obj){
-    return(
-        <div>
-            <h2>
-                {obj.Poke.name}
-            </h2>
-            <img src={obj.Poke.image} alt="" />
-            <span>Type:{obj.Poke.type}</span>
-        </div>
-    )
+function Pokecard({ poke }) {
+  return (
+    <div style={{ backgroundColor: "gray",borderRadius:10,padding:10 }}>
+      <h2 style={{ color: "blue" }}>{poke.name}</h2>
+      <img src={poke.image} alt="" />
+      <span style={{color:"black"}}>Type:{poke.type}</span>
+    </div>
+  );
 }
-export default Pokecard
+export default Pokecard;
