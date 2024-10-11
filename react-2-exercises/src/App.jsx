@@ -5,9 +5,12 @@ import Alert from "../exercise 1/alert-component/Alert";
 import Card from "../exercise 1/building-a-layout/Card";
 import "./App.css";
 import RenderList from "../exercise 1/maping-array-objects-to-li/RenderList";
-import Content from "../exercise 1/maping-array-of-objects-to-li/app";
+import ShowPlanets from "../exercise 1/maping-array-of-objects-to-li/ShowPlanets";
 import Pokedex from "../exercise 1/props-component-architecture/Pokedex";
 import CustomerInformation from "../exercise 1/rendering-from-objects/CustomerInformation";
+
+const planets = ["Mars", "Venus", "Jupiter", "Earth", "Saturn", "Neptune"];
+
 const pokemon= [
     {
       id: 1,
@@ -45,6 +48,7 @@ const pokemon= [
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
     },
   ];
+
   const customer = {
     first_name: "Bob",
     last_name: "Dylan",
@@ -53,15 +57,15 @@ function App() {
   return (
     <>
       {/* exercise1 */}
-      {/* <Alert text="OMG! Something really bad has happened!" /> */}
+      <Alert text="OMG! Something really bad has happened!" />
       {/* exercise2 */}
-      {/* <Card/> */}
+      <Card/>
       {/* exercise3 */}
-      {/* <RenderList /> */}
+      <RenderList />
       {/* exercise4 */}
-      {/* <Content/> */}
+      <ShowPlanets array={planets}/>
       {/* exercise5 */}
-      {/* <Pokedex pokemon={pokemon}/> */}
+      <Pokedex pokemon={pokemon}/>
       {/* exercise6 */}
       <CustomerInformation information={customer}/>
     </>
