@@ -4,19 +4,15 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Counter from "../1-counter/Counter";
 import ToggleTheme from "../2-toggle-theme/ToggleTheme";
-import "../2-toggle-theme/app.css"
+import "../2-toggle-theme/app.css";
 function App() {
-  const [isDarkTheme,setDarkTheme]=useState(".light-theme")
-  function changeTheme(){
-   
-      setDarkTheme(!isDarkTheme)
-  
-  }
 
   return (
     <>
-    <Counter/>
-      {/* <ToggleTheme handleClick={changeTheme}/> */}
+      {/* exercise1 */}
+      {/* <Counter/> */}
+      {/* exercise2 */}
+      <ToggleTheme />
     </>
   );
 }
