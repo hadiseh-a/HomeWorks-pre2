@@ -1,23 +1,24 @@
 import { useState } from "react";
 
 function LikeAndDeslikeButtons() {
+  let color = "";
   const [count, setCount] = useState(0);
-  const [like, setLike] = useState(false);
-  const [disLike, setDisLike] = useState(false);
-  const [color,setColor]=useState("")
+  const [activeLike, setActiveLike] = useState(false);
+  const [activeDisLike, setActiveDisLike] = useState(false);
   function handleLike() {
-    setLike(true);
+    setActiveLike(true);
+    setActiveDisLike(false);
     setCount(count + 1);
-    like?setColor("black"):setColor("green")
   }
   function handleDislike() {
-    setDisLike(true);
+    setActiveDisLike(true);
+    setActiveLike(false);
     setCount(count - 1);
-    disLike?setColor("black"):setColor("red")
+    disLike ? setColor("black") : setColor("red");
   }
 
   return (
-    <article style={{background:"blueviolet 25%"}}>
+    <article style={{ background: "blueviolet 25%" }}>
       <h1>post</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
@@ -26,7 +27,10 @@ function LikeAndDeslikeButtons() {
         pariatur libero ducimus nesciunt! Magnam?
       </p>
       <h3>{count}</h3>
-      <button onClick={handleLike} style={{ backgroundColor: {color} }}>
+      <button
+        onClick={handleLike}
+        style={{ backgroundColor: activeLike ? "black" : "green" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="40"
@@ -39,7 +43,10 @@ function LikeAndDeslikeButtons() {
         </svg>
       </button>
 
-      <button onClick={handleDislike} style={{ backgroundColor: {color} }}>
+      <button
+        onClick={handleDislike}
+        style={{ backgroundColor: activeDisLike ? "black" : "red" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="40"
