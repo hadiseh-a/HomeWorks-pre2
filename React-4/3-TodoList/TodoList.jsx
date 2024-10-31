@@ -4,13 +4,16 @@ function TodoList() {
   const [tasks, setTasks] = useState([
     // { userId: 1, id: "", title: "", completed: false },
   ]);
+  const [newTask,setNewTask]=useState("")
   function submitAddHandeler(e) {
+    e.preventDefault()
+    setNewTask(e.target.value)
     setTasks([
       ...tasks,
       {
         userId: 1,
         id: tasks.length + 1,
-        title: e.target.value,
+        title: newTask,
         completed: false,
       },
     ]);
@@ -39,19 +42,19 @@ function TodoList() {
     <section>
       <h1>Todo List</h1>
       <form onSubmit={submitAddHandeler}>
-        <input type="text" className={`form-control`} />
+        <input type="text" className={`form-control`} value={newTask} onChange={(e)=>setNewTask(e.target.value)}/>
         <button className={`btn-primary`}>Add</button>
       </form>
       <ul className={`list-group`}>
-        {tasks.map((item) => (
+        {tasks.map((item,index) => (
           <li
-            key={tasks.indexOf(item) + 1}
+            key={index}
             style={{ textDecoration: item.completed ? "lineThrough" : "none" }}
             className={`list-group-item`}
           >
-            <input type="checkbox" onChange={handleChangeCompleted} />
+            <input type="checkbox" onChange={handleChangeCompleted(index)} />
             {item}
-            <button className={`bi-trash`} onClick={handleDelete}>
+            <button className={`bi-trash`} onClick={handleDelete(index)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
