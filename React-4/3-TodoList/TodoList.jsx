@@ -1,39 +1,44 @@
 import { useEffect, useState } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 function TodoList() {
   const [tasks, setTasks] = useState([
-    { userId: 1, id: "", title: "", completed: false },
+    // { userId: 1, id: "", title: "", completed: false },
   ]);
-  function submitHandeler(e) {
+  function submitAddHandeler(e) {
     setTasks([
       ...tasks,
       {
         userId: 1,
-        id: tasks.length,
+        id: tasks.length + 1,
         title: e.target.value,
-        completed: checkBox,
+        completed: false,
       },
     ]);
   }
-  const [checkBox, setCheckbox] = useState(false);
-  function handleChange() {
-    setCheckbox(!checkBox);
+  function handleChangeCompleted(id) {
+    setTasks(
+      tasks.map((task, index) => {
+        index === id ? (task.completed = !task.completed) : task;
+      })
+    );
   }
-  //   function handleDelete() {
-  //   }
+  function handleDelete(id) {
+    setTasks(tasks.filter((task, index) => index !== id));
+  }
   useEffect(() => {
-    async () => {
+    const getTasks = async () => {
       const res = await fetch(
         "https://jsonplaceholder.typicode.com/todos?_start=0&_limit=5"
       );
       const initialData = await res.json();
-      setTasks(...tasks, ...initialData);
+      setTasks(...initialData);
     };
+    getTasks();
   }, []);
   return (
     <section>
       <h1>Todo List</h1>
-      <form onSubmit={submitHandeler}>
+      <form onSubmit={submitAddHandeler}>
         <input type="text" className={`form-control`} />
         <button className={`btn-primary`}>Add</button>
       </form>
@@ -41,12 +46,12 @@ function TodoList() {
         {tasks.map((item) => (
           <li
             key={tasks.indexOf(item) + 1}
-            style={{ textDecoration: checkBox ? "lineThrough" : "none" }}
+            style={{ textDecoration: item.completed ? "lineThrough" : "none" }}
             className={`list-group-item`}
           >
-            <input type="checkbox" onChange={handleChange} />
+            <input type="checkbox" onChange={handleChangeCompleted} />
             {item}
-            <button className={`bi-trash`}>
+            <button className={`bi-trash`} onClick={handleDelete}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

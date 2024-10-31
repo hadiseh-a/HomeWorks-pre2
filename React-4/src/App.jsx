@@ -1,4 +1,5 @@
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PostRendering from '../1-PostRendering/PostRendering'
 import RandomAdviceRendering from '../2-RandomAdviceRendering/RandomAdviceRendering'
 import TodoList from '../3-TodoList/TodoList'
